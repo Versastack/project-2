@@ -1,5 +1,8 @@
-# project-2
-This is a full-stack project
-The team (Yago, Juanda, Joan)
-joan lopez change
-wuzzzzuup
+# Project 2 (Ticket & workers System)
+
+## The team (Yago, Juanda, Joan)
+
+### Languages:
+- HTML
+- CSS
+- JS
