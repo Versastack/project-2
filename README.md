@@ -6,3 +6,6 @@
 - HTML
 - CSS
 - JS
+- Express
+- Mongoose
+- MongoDB
