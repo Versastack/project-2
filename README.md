@@ -14,7 +14,8 @@
 - Bcriptjs
 
 ### Frimeware
-[Link to excalidraw](https://excalidraw.com/#json=UnaSZp4hbBBX0AsnKlWxV,mUHnjn558XZX7Q41VGJn6Q)
+[Link to excalidraw](https://excalidraw.com/#json=2b6py-mhfn2U_T7fcmX2r,sxv8ar3zYy-BIiZHUI0fHQ)
+![excalidraw frameware](./src-readme/frameware.png)
 
 ### Routes
 | Route | HTTP Verb | Description           |
@@ -33,3 +34,14 @@
 | `/dashboard/:idadmin/:iduser/update` | GET   | It goes to a form with the user data where you can modify it |
 | `/dashboard/:idadmin/:iduser/update` | POST  | It updates the user with the modyfied fields in the form |
 | `/dashboard/:idadmin/:iduser/delete` | POST  | It deletes the user detected |
+
+
+### Models
+
+### worker
+
+- Workers
+
+
+
+- Admin
