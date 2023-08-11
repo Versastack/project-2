@@ -1,3 +1,3 @@
 # project-2
 This is a full-stack project
-asdf
+The team (Yago, Juanda, Joan)
