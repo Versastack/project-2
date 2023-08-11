@@ -36,12 +36,31 @@
 | `/dashboard/:idadmin/:iduser/delete` | POST  | It deletes the user detected |
 
 
-### Models
-
-### worker
-
-- Workers
+### MODELS
 
 
+- User
+    - username : {
+        type: String, 
+        required: true}
+    - email : {
+        type: String, 
+        required: true}
+    - password : 
+        {type: String, 
+        required: true}
 
 - Admin
+    - username : {
+        type: String, 
+        required: true}
+    - email : {
+        type: String, 
+        required: true}
+    - password : 
+        {type: String, 
+        required: true}
+    - collaborators : [{
+        type: Schema.Types.ObjectId,
+        ref: "User"
+    }]
