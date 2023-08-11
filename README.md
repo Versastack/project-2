@@ -7,7 +7,7 @@
 - CSS
 - JS
 - Express
-- Mingoose
+- Mongoose
 - MongoDB
 - ENV 
 - HBS 
