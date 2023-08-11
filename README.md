@@ -9,3 +9,6 @@
 - Express
 - Mongoose
 - MongoDB
+- ENV 
+- HBS 
+- Bcriptjs
