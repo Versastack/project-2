@@ -7,14 +7,10 @@ const router = express.Router();
 const Admin = require('../models/Admin.model');
 const User = require('../models/User.model');
 
-
-
-
 // GET ROUTES
 
 //sign-up get
 router.get("/signup", (req, res, next) => {
-
     res.render("signup");
 });
 
@@ -48,7 +44,21 @@ router.post("/login", (req, res, next) => {
         .catch(err => console.log('This error has been triggered', err))
 });
 
+// user goes to his dashboard
 
+router.get("/dashboard/:idUser", (req, res, next) => {
+    const idUser = req.params.idUser;
+    User.findById(idUser)
+    .then((data) => {
+        res.render("user/user-dashboard", {data});
+    })
+    .catch(err => console.log('This error has been triggered', err))
+});
+
+// user goes back to login
+// router.get("user/user-dashboard", (req, res, next) => {
+//     res.redirect("/login");
+// });
 
 // router.post("/dashboard/:idAdmin/update", (req, res, next) => {
 //     const adminId = req.params.idAdmin;
