@@ -1,4 +1,8 @@
 const express = require('express');
+//const User = require('../models/User.model');
+//const bcryptjs = require('bcryptjs');
+//const saltRounds = 10;
+const mongoose = require('mongoose')
 const router = express.Router();
 
 /*Sign-up*/
