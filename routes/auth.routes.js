@@ -32,9 +32,9 @@ router.post("/signup", (req, res, next) => {
 });
 
 
-router.get("/dashboard/:idAdmin", (req, res, next) => {
-    res.render("/admin");
-});
+// router.get("/dashboard/:idAdmin", (req, res, next) => {
+//     res.render("/admin");
+// });
 
 // login posts
 
@@ -42,6 +42,17 @@ router.get("/dashboard/:idAdmin", (req, res, next) => {
 router.post("/login", (req, res, next) => {
     const { username, password } = req.body;
     res.redirect("/dashboard/:idAdmin");
+});
+
+//get to the admin dashboard
+
+router.get("/dashboard/:idAdmin",(req,res,next)=>{
+    const { username, email } = req.body;
+    Admin.findOne({username})
+    .then((data) => {
+        console.log(data)
+        res.render(`admin/admin-dashboard`, data)
+    }) 
 });
 
 
