@@ -6,8 +6,6 @@ const router = express.Router();
 // const User = require('../models/User.model');
 const Admin = require('../models/Admin.model');
 
-
-
 //sign-up get
 router.get("/signup", (req, res, next) => {
 
@@ -54,7 +52,5 @@ router.delete("/dashboard/:idAdmin/delete", (req, res) => {
 
     res.send('Admin user and related workers deleted.');
   });
-
-
 
 module.exports = router;
