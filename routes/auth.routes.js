@@ -8,18 +8,18 @@ const Admin = require('../models/Admin.model');
 
 
 
-/*Sign-up*/
+//sign-up get
 router.get("/signup", (req, res, next) => {
 
     res.render("signup");
 });
 
-//login
+//login get
 router.get("/login", (req, res, next) => {
     res.render("login");
 });
 
-/*Sign-up POST*/
+//signup post
 router.post("/signup", (req, res, next) => {
     const {username, email, password} = req.body
     Admin
@@ -32,42 +32,29 @@ router.post("/signup", (req, res, next) => {
 });
 
 
-// router.get("/dashboard/:idAdmin", (req, res, next) => {
-//     res.render("/admin");
-// });
+router.get("/dashboard/:idAdmin", (req, res, next) => {
+    //change for redirect to dashboard
+    res.send("pepe");
+});
 
-// login posts
-
-
+//login post
 router.post("/login", (req, res, next) => {
     const { username, password } = req.body;
-    res.redirect("/dashboard/:idAdmin");
-});
-
-//get to the admin dashboard
-
-router.get("/dashboard/:idAdmin",(req,res,next)=>{
-    const { username, email } = req.body;
     Admin.findOne({username})
     .then((data) => {
-        console.log(data)
-        res.render(`admin/admin-dashboard`, data)
-    }) 
+        res.redirect(`/dashboard/${data._id}`);
+    })
+    .catch(err=> console.log('This error has been triggered',err)) 
 });
 
+// delete button
+router.delete("/dashboard/:idAdmin/delete", (req, res) => {
+    const adminId = req.params.idAdmin;
+    Admin.findByIdAndDelete(adminId)
 
+    res.send('Admin user and related workers deleted.');
+  });
 
-// router.delete('/dashboard/:idadmin/delete', (req, res) => {
-//     const adminId = req.params.idadmin;
-
-//     // Delete admin user
-//     // code to delete admin user goes here
-
-//     // Delete related workers
-//     // code to delete related workers goes here
-
-//     res.send('Admin user and related workers deleted successfully.');
-//   });
 
 
 module.exports = router;
