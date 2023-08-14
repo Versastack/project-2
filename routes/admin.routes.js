@@ -47,13 +47,6 @@ router.get("/dashboard/:idAdmin", (req, res, next) => {
     .catch(err => console.log('This error has been triggered', err))
 });
 
-
-
-
-// get it goes to user update
-
-
-
 //POST ROUTES
 
 // update button
@@ -86,27 +79,13 @@ router.post("/signup", (req, res, next) => {
 
 router.post("/dashboard/:idAdmin/create", (req, res, next) => {
     const { username, email, password, position } = req.body
-    const idAdmin = req.params.idAdmin;
-    console.log(username, email, password, position, idAdmin)
+    const administrator = req.params.idAdmin;
+    console.log(username, email, password, position, administrator)
     User
-        .create({ username, email, password, position, idAdmin })
+        .create({ username, email, password, position, administrator })
         .then((data) => {
             console.log("New user created: ", data)
-            res.redirect("/dashboard/:idAdmin/");
+            res.redirect(`/dashboard/${administrator}`);
         })
         .catch(err => console.log('This error has been triggered', err))
 });
-
-// modify user as an admin
-
-// router.post("/dashboard/:idAdmin/create", (req, res, next) => {
-//     const { username, email, password, position } = req.body
-//     const idAdmin = req.params.idUser;
-//     User
-//         .create({ username, email, password, position, idAdmin })
-//         .then((data) => {
-//             console.log("New user created: ", data)
-//             res.redirect("/dashboard/:idAdmin/");
-//         })
-//         .catch(err => console.log('This error has been triggered', err))
-// });
