@@ -45,12 +45,21 @@ router.post("/login", (req, res, next) => {
 });
 
 
-router.delete("/dashboard/:idAdmin/delete", (req, res) => {
+router.delete("/dashboard/:idAdmin/delete", (req, res, next) => {
     const adminId = req.params.idAdmin;
     Admin.findByIdAndDelete(adminId)
 
-    res.send('Admin user and related workers deleted.');
+    res.send('Admin user and workers deleted.');
   });
+  
+
+// router.update("/dashboard/:idAdmin/update", (req, res, next) => {
+//     const adminId = req.params.idAdmin;
+//     Admin.findByIdAndUpdate(adminId)
+
+//     res.send('User updated.');
+//   });
+
 
 
 
