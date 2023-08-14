@@ -9,7 +9,29 @@
 <form action="/dashboard/{{data._id}}/delete" method="GET">
     <button type="submit">Delete your admin profile</button>
 </form>
-<p>{{allUsers}}</p>
+<form action="/dashboard/{{data._id}}/create" method="GET">
+    <button type="submit">Create a new collaborator profile</button>
+</form>
+<table>
+  <thead>
+    <tr>
+      <th>username</th>
+      <th>email</th>
+      <th>password</th>
+    </tr>
+  </thead>
+  <tbody>
+    {{#each allUsers}}
+    <tr>
+      <td>{{this.username}}</td>
+      <td>{{this.email}}</td>
+      <td>{{this.password}}</td>
+    </tr>
+    </a>
+    {{/each}}
+  </tbody>
+</table>
+
 {{!-- <div>
     <table>
   <tr>

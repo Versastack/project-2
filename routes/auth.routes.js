@@ -46,14 +46,14 @@ router.post("/login", (req, res, next) => {
 
 // user goes to his dashboard
 
-router.get("/dashboard/:idUser", (req, res, next) => {
-    const idUser = req.params.idUser;
-    User.findById(idUser)
-    .then((data) => {
-        res.render("user/user-dashboard", {data});
-    })
-    .catch(err => console.log('This error has been triggered', err))
-});
+// router.get("/dashboard/:idUser", (req, res, next) => {
+//     const idUser = req.params.idUser;
+//     User.findById(idUser)
+//     .then((data) => {
+//         res.render("user/user-dashboard", {data});
+//     })
+//     .catch(err => console.log('This error has been triggered', err))
+// });
 
 // user goes back to login
 // router.get("user/user-dashboard", (req, res, next) => {
