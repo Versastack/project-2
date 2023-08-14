@@ -6,6 +6,10 @@ const router = express.Router();
 // const User = require('../models/User.model');
 const Admin = require('../models/Admin.model');
 
+
+
+// GET ROUTES
+
 //sign-up get
 router.get("/signup", (req, res, next) => {
 
@@ -17,27 +21,32 @@ router.get("/login", (req, res, next) => {
     res.render("login");
 });
 
+//GET to admin-user-dashboard and user render
+
+// router.get("/dashboard/:idAdmin/:idUser", (req, res, next) => {
+//     const userId = req.params.idUser;
+    
+//     User.findById(userId)
+//     .then((userData) => {
+//         res.render("admin/admin-user-dashboard", {userData});
+//     })
+//     .catch(err => console.log('This error has been triggered', err))
+// });
+
+// POST OUTES
+
 //signup post
 router.post("/signup", (req, res, next) => {
     const { username, email, password } = req.body
     Admin
         .create({ username, email, password })
         .then((data) => {
-            console.log(data)
+            console.log("New user created: ", data)
             res.redirect("/login");
         })
         .catch(err => console.log('This error has been triggered', err))
 });
 
-//render dashboard for the admin logged
-router.get("/dashboard/:idAdmin", (req, res, next) => {
-    const adminId = req.params.idAdmin;
-    Admin.findById(adminId)
-    .then((data) => {
-        res.render("admin/admin-dashboard", {data});
-    })
-    .catch(err => console.log('This error has been triggered', err))
-});
 
 //login post
 router.post("/login", (req, res, next) => {
@@ -49,19 +58,15 @@ router.post("/login", (req, res, next) => {
         .catch(err => console.log('This error has been triggered', err))
 });
 
-// delete button
-router.delete("/dashboard/:idAdmin/delete", (req, res) => {
+
+
+router.post("/dashboard/:idAdmin/update", (req, res, next) => {
     const adminId = req.params.idAdmin;
-    Admin.findByIdAndDelete(adminId)
-
-    res.send('Admin user and related workers deleted.');
-});
-
-// router.update("/dashboard/:idAdmin/update", (req, res, next) => {
-//     const adminId = req.params.idAdmin;
-//     Admin.findByIdAndUpdate(adminId)
-
-//     res.send('User updated.');
-//   });
+    Admin.findByIdAndUpdate(adminId, req.body)
+    .then(()=> {
+        res.send("User updated"); 
+    })
+    .catch(err => console.log(Error, err))
+  });
 
 module.exports = router;

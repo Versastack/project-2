@@ -5,7 +5,9 @@ const userSchema = new Schema({
     username: {
         type: String,
         required: true,
-        unique: true
+        unique: true,
+        lowercase: true,
+        trim: true
     },
     email: {
         type: String,
@@ -18,12 +20,14 @@ const userSchema = new Schema({
         required: true
     },
     position: {
-        type: String
+        type: String,
+        lowercase: true,
     },
     administrator: {
         type: Schema.Types.ObjectId,
         ref: "Admin"
     }
+    
 })
 
 const User = model("User", userSchema);
