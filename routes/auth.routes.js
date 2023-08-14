@@ -8,18 +8,18 @@ const Admin = require('../models/Admin.model');
 
 
 
-/*Sign-up*/
+//sign-up get
 router.get("/signup", (req, res, next) => {
 
     res.render("signup");
 });
 
-//login
+//login get
 router.get("/login", (req, res, next) => {
     res.render("login");
 });
 
-/*Sign-up POST*/
+//signup post
 router.post("/signup", (req, res, next) => {
     const {username, email, password} = req.body
     Admin
@@ -33,15 +33,18 @@ router.post("/signup", (req, res, next) => {
 
 
 router.get("/dashboard/:idAdmin", (req, res, next) => {
-    res.render("/admin");
+    //change for redirect to dashboard
+    res.send("pepe");
 });
 
-// login posts
-
-
+//login post
 router.post("/login", (req, res, next) => {
     const { username, password } = req.body;
-    res.redirect("/dashboard/:idAdmin");
+    Admin.findOne({username})
+    .then((data) => {
+        res.redirect(`/dashboard/${data._id}`);
+    })
+    .catch(err=> console.log('This error has been triggered',err)) 
 });
 
 

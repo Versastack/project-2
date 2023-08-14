@@ -4,12 +4,12 @@ const Schema = mongoose.Schema;
 const userSchema = new Schema({
     username: {
         type: String,
-        required: true
+        required: true,
+        unique: true
     },
     email: {
         type: String,
         required: true,
-        unique: true,
         lowercase: true,
         trim: true
     },
@@ -17,10 +17,13 @@ const userSchema = new Schema({
         type: String,
         required: true
     },
-    project: [{
+    position: {
+        type: String
+    },
+    administrator: {
         type: Schema.Types.ObjectId,
         ref: "Admin"
-    }]
+    }
 })
 
 const User = model("User", userSchema);
