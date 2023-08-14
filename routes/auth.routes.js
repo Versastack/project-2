@@ -29,10 +29,9 @@ router.post("/signup", (req, res, next) => {
         .catch(err => console.log('This error has been triggered', err))
 });
 
-
+//render dashboard for the admin logged
 router.get("/dashboard/:idAdmin", (req, res, next) => {
-    //change for redirect to dashboard
-    res.send("pepe");
+    res.render("admin/admin-dashboard");
 });
 
 //login post
