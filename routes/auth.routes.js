@@ -47,19 +47,14 @@ router.post("/login", (req, res, next) => {
     .catch(err=> console.log('This error has been triggered',err)) 
 });
 
+// delete button
+router.delete("/dashboard/:idAdmin/delete", (req, res) => {
+    const adminId = req.params.idAdmin;
+    Admin.findByIdAndDelete(adminId)
 
+    res.send('Admin user and related workers deleted.');
+  });
 
-// router.delete('/dashboard/:idadmin/delete', (req, res) => {
-//     const adminId = req.params.idadmin;
-
-//     // Delete admin user
-//     // code to delete admin user goes here
-
-//     // Delete related workers
-//     // code to delete related workers goes here
-
-//     res.send('Admin user and related workers deleted successfully.');
-//   });
 
 
 module.exports = router;
