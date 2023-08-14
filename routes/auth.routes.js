@@ -5,6 +5,8 @@ const mongoose = require('mongoose')
 const router = express.Router();
 // const User = require('../models/User.model');
 const Admin = require('../models/Admin.model');
+const User = require('../models/User.model');
+
 
 
 
@@ -19,6 +21,23 @@ router.get("/signup", (req, res, next) => {
 //login get
 router.get("/login", (req, res, next) => {
     res.render("login");
+});
+
+// user goes to his dashboard
+
+router.get("/dashboard/:idUser", (req, res, next) => {
+    const IdUser = req.params.idUser;
+    User.findById(idUser)
+    .then((data) => {
+        res.render("user/user-dashboard", {data});
+    })
+    .catch(err => console.log('This error has been triggered', err))
+});
+
+// user goes back to login
+
+router.get("user/user-dashboard", (req, res, next) => {
+    res.redirect("/login");
 });
 
 
