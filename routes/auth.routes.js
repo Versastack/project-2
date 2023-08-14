@@ -19,14 +19,14 @@ router.get("/login", (req, res, next) => {
 
 //signup post
 router.post("/signup", (req, res, next) => {
-    const {username, email, password} = req.body
+    const { username, email, password } = req.body
     Admin
-    .create({username,email,password})
-    .then((data)=>{
-        console.log(data)
-        res.redirect("/login");
-    })
-    .catch(err=> console.log('This error has been triggered',err)) 
+        .create({ username, email, password })
+        .then((data) => {
+            console.log(data)
+            res.redirect("/login");
+        })
+        .catch(err => console.log('This error has been triggered', err))
 });
 
 
@@ -38,11 +38,11 @@ router.get("/dashboard/:idAdmin", (req, res, next) => {
 //login post
 router.post("/login", (req, res, next) => {
     const { username, password } = req.body;
-    Admin.findOne({username})
-    .then((data) => {
-        res.redirect(`/dashboard/${data._id}`);
-    })
-    .catch(err=> console.log('This error has been triggered',err)) 
+    Admin.findOne({ username })
+        .then((data) => {
+            res.redirect(`/dashboard/${data._id}`);
+        })
+        .catch(err => console.log('This error has been triggered', err))
 });
 
 // delete button
@@ -51,6 +51,13 @@ router.delete("/dashboard/:idAdmin/delete", (req, res) => {
     Admin.findByIdAndDelete(adminId)
 
     res.send('Admin user and related workers deleted.');
-  });
+});
+
+// router.update("/dashboard/:idAdmin/update", (req, res, next) => {
+//     const adminId = req.params.idAdmin;
+//     Admin.findByIdAndUpdate(adminId)
+
+//     res.send('User updated.');
+//   });
 
 module.exports = router;
