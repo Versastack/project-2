@@ -21,19 +21,6 @@ router.get("/login", (req, res, next) => {
     res.render("login");
 });
 
-
-
-//GET to admin-user-dashboard and user render
-router.get("/dashboard/:idAdmin/:idUser", (req, res, next) => {
-    const userId = req.params.idUser;
-
-    User.findById(userId)
-    .then((userData) => {
-        res.render("admin/admin-user-dashboard", {userData});
-    })
-    .catch(err => console.log('This error has been triggered', err))
-});
-
 // POST OUTES
 
 //signup post

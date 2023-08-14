@@ -9,12 +9,15 @@ const Admin = require('../models/Admin.model');
 
 // GET ROUTES
 
-// render admin in dashboard and dashboard hbs
+// render admin in dashboard and dashboard user
 router.get("/dashboard/:idAdmin", (req, res, next) => {
-    const adminId = req.params.idAdmin;
+    const adminId = req.params.idAdmin;  
     Admin.findById(adminId)
     .then((data) => {
-        res.render("admin/admin-dashboard", {data});
+        User.find({administrator : adminId})
+        .then((allUsers) => {
+            res.render("admin/admin-dashboard", {data , allUsers})
+        })
     })
     .catch(err => console.log('This error has been triggered', err))
 });
@@ -36,13 +39,13 @@ router.get("/dashboard/:idAdmin/create", (req, res, next) => {
     res.render("admin/admin-create", {idAdmin})
 });
 
+//GET to admin-user-dashboard and user render, see user created by an admin
+router.get("/dashboard/:idAdmin/:idUser", (req, res, next) => {
+    const userId = req.params.idUser;
 
-// render admin user dashboard hbs
-router.get("/dashboard/:idAdmin", (req, res, next) => {
-    const adminId = req.params.idAdmin;
-    Admin.findById(adminId)
-    .then((data) => {
-        res.render("admin/admin-dashboard", {data});
+    User.findById(userId)
+    .then((userData) => {
+        res.render("admin/admin-user-dashboard", {userData});
     })
     .catch(err => console.log('This error has been triggered', err))
 });
@@ -50,15 +53,15 @@ router.get("/dashboard/:idAdmin", (req, res, next) => {
 //POST ROUTES
 
 // update button
-router.post("/dashboard/:idAdmin/update", (req, res, next) => {
-    const adminId = req.params.idAdmin;
-    Admin
-    .findByIdAndUpdate(adminId, req.body)
-    .then(()=> {
-        res.send("User updated"); 
-    })
-    .catch(err => console.log(Error, err))
-  });
+// router.post("/dashboard/:idAdmin/update", (req, res, next) => {
+//     const adminId = req.params.idAdmin;
+//     Admin
+//     .findByIdAndUpdate(adminId, req.body)
+//     .then(()=> {
+//         res.send("User updated"); 
+//     })
+//     .catch(err => console.log(Error, err))
+//   });
 
 module.exports = router;
 
