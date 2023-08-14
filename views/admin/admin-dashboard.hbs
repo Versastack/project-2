@@ -1,9 +1,50 @@
 <div>
-<img src="https://img.freepik.com/premium-vector/man-avatar-profile-picture-vector-illustration_268834-538.jpg" alt="">
-<p>{{data}}</p>
-{{!-- {{#each data}}
-   <p>{{this.username}}</p>  
-    <p>{{this.email}}</p>    
-    <p>{{this._id}}</p>    
-{{/each}} --}}
+{{!-- <img src="https://img.freepik.com/premium-vector/man-avatar-profile-picture-vector-illustration_268834-538.jpg" alt=""> --}}
+{{!-- <p>{{data}}</p> --}}
+    <h1>Admin profile</h1>
+    <p>Username: {{data.username}}</p>  
+    <p>Email: {{data.email}}</p>    
+    <p>Admin ID: {{data._id}}</p>    
+</div>
+<form action="/dashboard/{{data._id}}/delete" method="GET">
+    <button type="submit">Delete your admin profile</button>
+</form>
+{{!-- <div>
+    <table>
+  <tr>
+    <th>Header 1</th>
+    <th>Header 2</th>
+    <th>Header 3</th>
+  </tr>
+  <tr>
+    <td>Row 1, Col 1</td>
+    <td>Row 1, Col 2</td>
+    <td>Row 1, Col 3</td>
+  </tr>
+  <tr>
+    <td>Row 2, Col 1</td>
+    <td>Row 2, Col 2</td>
+    <td>Row 2, Col 3</td>
+  </tr>
+  <tr>
+    <td>Row 3, Col 1</td>
+    <td>Row 3, Col 2</td>
+    <td>Row 3, Col 3</td>
+  </tr>
+  <tr>
+    <td>Row 4, Col 1</td>
+    <td>Row 4, Col 2</td>
+    <td>Row 4, Col 3</td>
+  </tr>
+  <tr>
+    <td>Row 5, Col 1</td>
+    <td>Row 5, Col 2</td>
+    <td>Row 5, Col 3</td>
+  </tr>
+  <tr>
+    <td>Row 6, Col 1</td>
+    <td>Row 6, Col 2</td>
+    <td>Row 6, Col 3</td>
+  </tr>
+</table> --}}
 </div>

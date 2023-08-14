@@ -21,17 +21,19 @@ router.get("/login", (req, res, next) => {
     res.render("login");
 });
 
+
+
 //GET to admin-user-dashboard and user render
 
-// router.get("/dashboard/:idAdmin/:idUser", (req, res, next) => {
-//     const userId = req.params.idUser;
+//  router.get("/dashboard/:idAdmin/:idUser", (req, res, next) => {
+//      const userId = req.params.idUser;
     
-//     User.findById(userId)
-//     .then((userData) => {
-//         res.render("admin/admin-user-dashboard", {userData});
-//     })
-//     .catch(err => console.log('This error has been triggered', err))
-// });
+//      User.findById(userId)
+//      .then((userData) => {
+//          res.render("admin/admin-user-dashboard", {userData});
+//      })
+//      .catch(err => console.log('This error has been triggered', err))
+//  });
 
 // POST OUTES
 
@@ -68,5 +70,25 @@ router.post("/dashboard/:idAdmin/update", (req, res, next) => {
     })
     .catch(err => console.log(Error, err))
   });
+
+
+//  delete user
+// route.post("/dashboard/:idAdmin/:idUser/delete", (req, res, next)=> {
+//     const idAdmin = req.params.idAdmin
+//     const idUser = req.params.idUser;
+// Admin.findByIdAndDelete(idUser, req.body)
+//     .then(()=> {
+//         res.send("User deleted"); 
+//     })
+//     .catch(err => console.log(Error, err))
+
+
+// })
+
+
+
+
+
+
 
 module.exports = router;
