@@ -45,18 +45,13 @@ router.post("/login", (req, res, next) => {
 });
 
 
+router.delete("/dashboard/:idAdmin/delete", (req, res) => {
+    const adminId = req.params.idAdmin;
+    Admin.findByIdAndDelete(adminId)
 
-// router.delete('/dashboard/:idadmin/delete', (req, res) => {
-//     const adminId = req.params.idadmin;
+    res.send('Admin user and related workers deleted.');
+  });
 
-//     // Delete admin user
-//     // code to delete admin user goes here
-
-//     // Delete related workers
-//     // code to delete related workers goes here
-
-//     res.send('Admin user and related workers deleted successfully.');
-//   });
 
 
 module.exports = router;
