@@ -31,7 +31,12 @@ router.post("/signup", (req, res, next) => {
 
 //render dashboard for the admin logged
 router.get("/dashboard/:idAdmin", (req, res, next) => {
-    res.render("admin/admin-dashboard");
+    const adminId = req.params.idAdmin;
+    Admin.findById(adminId)
+    .then((data) => {
+        res.render("admin/admin-dashboard", {data});
+    })
+    .catch(err => console.log('This error has been triggered', err))
 });
 
 //login post
