@@ -36,13 +36,57 @@ router.post("/signup", (req, res, next) => {
 
 //login post
 router.post("/login", (req, res, next) => {
-    const { username, password } = req.body;
-    Admin.findOne({ username })
-        .then((data) => {
-            res.redirect(`/dashboard/${data._id}`);
-        })
-        .catch(err => console.log('This error has been triggered', err))
-});
+    const {username, password} = req.body;
+    // THIS IS ASYNC, admin takes a while to be defined, we need a then
+    console.log(username, password);
+    Admin.findOne({ username, password })
+    .then((admin)=> {
+        if(admin === null){
+            User.findOne({ username, password })
+            .then((user)=>{
+                if (user === null) {
+                    console.log("no estas registrado");
+                }
+                else {
+                    console.log(user, "eres usuario")
+                }
+            })
+            
+        }
+        else {
+            console.log(admin, "eres admin")
+        }
+    })
+    .catch((err)=> console.log(err))
+    
+   
+    // const user = User.findOne({ username, password });
+
+/*     if (admin) {
+        // Redirect to admin dashboard
+         Admin.findOne({ username })
+         .then((data) => {
+            res.render('admin/admin-dashboard', {adminId: data._id});  
+    })}
+    
+    else if (user) {
+            User.findOne({ username })
+            .then((data) => {
+           res.render('user/user-dashboard', {userId: data._id}) }) 
+        } */
+
+        
+    });
+
+
+//     const { username, password } = req.body;
+
+//     Admin.findOne({ username })
+//         .then((data) => {
+//             res.redirect(`/dashboard/${data._id}`);
+//         })
+//         .catch(err => console.log('This error has been triggered', err))
+// });
 
 // user goes to his dashboard
 
