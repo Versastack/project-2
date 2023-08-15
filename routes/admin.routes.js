@@ -6,6 +6,7 @@ const router = express.Router();
 const User = require('../models/User.model');
 const Admin = require('../models/Admin.model');
 const { isLoggedIn, isUser, sameAdmin } = require('../middleware/route-guard.js');
+const fileUploader = require('../config/cloudinary.config');
 // All middlewares: isLoggedIn, isUser
 // GET ROUTES
 
@@ -104,7 +105,7 @@ router.post("/dashboard/:idAdmin/create", (req, res, next) => {
 });
 
 //update admin profile
-router.post("/dashboard/:idAdmin/update", (req, res, next) => {
+router.post("/dashboard/:idAdmin/update", fileUploader.single('image'), (req, res, next) => {
     const { username, email, password, position } = req.body
     const adminId = req.params.idAdmin
     Admin
@@ -112,7 +113,7 @@ router.post("/dashboard/:idAdmin/update", (req, res, next) => {
         username: username,
         email: email,
         password: password,
-        position: position
+        image: req.file.path
     })
         .then((data) => {
             console.log(" User modified: ", data)

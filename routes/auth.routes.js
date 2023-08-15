@@ -5,6 +5,8 @@ const mongoose = require('mongoose')
 const router = express.Router();
 const Admin = require('../models/Admin.model');
 const User = require('../models/User.model');
+const fileUploader = require('../config/cloudinary.config');
+
 // GET ROUTES
 
 //sign-up get
@@ -28,7 +30,7 @@ router.post('/logout', (req, res, next) => {
 // POST OUTES
 
 //signup post
-router.post("/signup", (req, res, next) => {
+router.post("/signup", fileUploader.single('image'), (req, res, next) => {
     const { username, email, password } = req.body
     bcryptjs
         .genSalt(saltRounds)
@@ -37,7 +39,8 @@ router.post("/signup", (req, res, next) => {
             return Admin.create({
                     username,
                     email,
-                    password: hashedPassword
+                    password: hashedPassword,
+                    image : req.file.path
                 })
         })
         .then((data) => {
