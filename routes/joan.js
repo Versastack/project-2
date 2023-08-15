@@ -2,10 +2,10 @@
 
  router.post("/dashboard/:idAdmin/update", (req, res, next) => {
      const { username, email, password, position } = req.body
-     const idUser = req.params.idUser;
+     const userId = req.params.idUser;
      User
      User
-     .findByIdAndUpdate(idUser, {
+     .findByIdAndUpdate(userId, {
          username: username,
          email: email,
          password: password,
