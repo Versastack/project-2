@@ -1,9 +1,8 @@
 const express = require('express');
-//const bcryptjs = require('bcryptjs');
-//const saltRounds = 10;
+const bcryptjs = require('bcryptjs');
+const saltRounds = 10;
 const mongoose = require('mongoose')
 const router = express.Router();
-// const User = require('../models/User.model');
 const Admin = require('../models/Admin.model');
 const User = require('../models/User.model');
 
@@ -24,8 +23,16 @@ router.get("/login", (req, res, next) => {
 //signup post
 router.post("/signup", (req, res, next) => {
     const { username, email, password } = req.body
-    Admin
-        .create({ username, email, password })
+    bcryptjs
+        .genSalt(saltRounds)
+        .then(salt => bcryptjs.hash(password, salt))
+        .then(hashedPassword => {
+            return Admin.create({
+                    username,
+                    email,
+                    password: hashedPassword
+                })
+        })
         .then((data) => {
             console.log("New user created: ", data)
             res.redirect("/login");
@@ -36,29 +43,33 @@ router.post("/signup", (req, res, next) => {
 //login post
 router.post("/login", (req, res, next) => {
     const {username, password} = req.body;
-    // THIS IS ASYNC, admin takes a while to be defined, we need a then
-    console.log(username, password);
-    Admin.findOne({ username, password })
+    Admin.findOne({username})
     .then((admin)=> {
         if(admin === null){
-            User.findOne({ username, password })
+            User.findOne({username})
             .then((user)=>{
                 if (user === null) {
                     console.log("usuario no registrado")
                 }
                 else {
-                    //if user redirect to user dashboard
-                    res.redirect(`/user/dashboard/${user._id}`)
+                    if(bcryptjs.compareSync(password, user.password)) {
+                        res.redirect(`/user/dashboard/${user._id}`)
+                    }
+                    else{
+                        console.log("User contraseña mal")
+                    }
                 }
-            })
-            
+            }) 
         }
         else {
-            //if admin redirect to admin dashboard
-            res.redirect(`/dashboard/${admin._id}`)
+            if(bcryptjs.compareSync(password, admin.password)) {
+                res.redirect(`/dashboard/${admin._id}`)
+            }
+            else{
+                console.log("Admin contraseña mal")
+            }
         }
     })
-    .catch((err)=> console.log(err))
 });
 
 module.exports = router;

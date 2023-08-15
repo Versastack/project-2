@@ -1,6 +1,6 @@
 const express = require('express');
-//const bcryptjs = require('bcryptjs');
-//const saltRounds = 10;
+const bcryptjs = require('bcryptjs');
+const saltRounds = 10;
 const mongoose = require('mongoose')
 const router = express.Router();
 const User = require('../models/User.model');
@@ -84,14 +84,30 @@ router.get("/dashboard/:idAdmin/:idUser/delete", (req, res, next) => {
 router.post("/dashboard/:idAdmin/create", (req, res, next) => {
     const { username, email, password, position } = req.body
     const administrator = req.params.idAdmin;
-    console.log(username, email, password, position, administrator)
-    User
-        .create({ username, email, password, position, administrator })
+    bcryptjs
+        .genSalt(saltRounds)
+        .then(salt => bcryptjs.hash(password, salt))
+        .then(hashedPassword => {
+            return User.create({
+                    username,
+                    email,
+                    password: hashedPassword,
+                    position,
+                    administrator
+                })
+        })
         .then((data) => {
             console.log("New user created: ", data)
             res.redirect(`/dashboard/${administrator}`);
         })
         .catch(err => console.log('This error has been triggered', err))
+    // User
+    //     .create({ username, email, password, position, administrator })
+    //     .then((data) => {
+    //         console.log("New user created: ", data)
+    //         res.redirect(`/dashboard/${administrator}`);
+    //     })
+    //     .catch(err => console.log('This error has been triggered', err))
 });
 
 //update admin profile
