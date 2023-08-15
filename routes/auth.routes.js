@@ -5,7 +5,6 @@ const mongoose = require('mongoose')
 const router = express.Router();
 const Admin = require('../models/Admin.model');
 const User = require('../models/User.model');
-
 // GET ROUTES
 
 //sign-up get
@@ -53,6 +52,7 @@ router.post("/login", (req, res, next) => {
                 }
                 else {
                     if(bcryptjs.compareSync(password, user.password)) {
+                        req.session.currentUser = user;
                         res.redirect(`/user/dashboard/${user._id}`)
                     }
                     else{
@@ -63,6 +63,7 @@ router.post("/login", (req, res, next) => {
         }
         else {
             if(bcryptjs.compareSync(password, admin.password)) {
+                req.session.currentUser = admin;
                 res.redirect(`/dashboard/${admin._id}`)
             }
             else{
