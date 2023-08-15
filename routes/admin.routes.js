@@ -5,12 +5,12 @@ const mongoose = require('mongoose')
 const router = express.Router();
 const User = require('../models/User.model');
 const Admin = require('../models/Admin.model');
-const { isLoggedIn, isUser } = require('../middleware/route-guard.js');
+const { isLoggedIn, isUser, sameAdmin } = require('../middleware/route-guard.js');
 // All middlewares: isLoggedIn, isUser
 // GET ROUTES
 
 // render admin in dashboard and dashboard user
-router.get("/dashboard/:idAdmin", isLoggedIn, isUser, (req, res, next) => {
+router.get("/dashboard/:idAdmin", isLoggedIn, isUser, sameAdmin, (req, res, next) => {
     const adminId = req.params.idAdmin;  
     Admin.findById(adminId)
     .then((data) => {
@@ -23,7 +23,7 @@ router.get("/dashboard/:idAdmin", isLoggedIn, isUser, (req, res, next) => {
 });
 
 // delete admin and all users realted to it
-router.get("/dashboard/:idAdmin/delete", isLoggedIn, isUser, (req, res) => {
+router.get("/dashboard/:idAdmin/delete", isLoggedIn, isUser, sameAdmin, (req, res) => {
     const adminId = req.params.idAdmin;
     Admin.findByIdAndDelete(adminId)
     .then (() =>{
@@ -36,19 +36,19 @@ router.get("/dashboard/:idAdmin/delete", isLoggedIn, isUser, (req, res) => {
 });
 
 // go to create user page
-router.get("/dashboard/:idAdmin/create", isLoggedIn, isUser, (req, res, next) => {
+router.get("/dashboard/:idAdmin/create", isLoggedIn, isUser, sameAdmin, (req, res, next) => {
     const idAdmin = req.params.idAdmin
     res.render("admin/admin-create", {idAdmin})
 });
 
 //go to modify admin
-router.get("/dashboard/:idAdmin/update", isLoggedIn, isUser, (req, res, next) => {
+router.get("/dashboard/:idAdmin/update", isLoggedIn, isUser, sameAdmin, (req, res, next) => {
     const idAdmin = req.params.idAdmin
     res.render("admin/admin-update", {idAdmin})
 });
 
 //GET to admin-user-dashboard and user render, see user created by an admin
-router.get("/dashboard/:idAdmin/:idUser", isLoggedIn, isUser, (req, res, next) => {
+router.get("/dashboard/:idAdmin/:idUser", isLoggedIn, isUser, sameAdmin, (req, res, next) => {
     const userId = req.params.idUser;
     User.findById(userId)
     .then((userData) => {
@@ -58,7 +58,7 @@ router.get("/dashboard/:idAdmin/:idUser", isLoggedIn, isUser, (req, res, next) =
 });
 
 // go to update user page
-router.get("/dashboard/:idAdmin/:idUser/update", isLoggedIn, isUser, (req, res, next) => {
+router.get("/dashboard/:idAdmin/:idUser/update", isLoggedIn, isUser, sameAdmin, (req, res, next) => {
     const userId = req.params.idUser
     User.findById(userId)
     .then((userData) => {
@@ -68,7 +68,7 @@ router.get("/dashboard/:idAdmin/:idUser/update", isLoggedIn, isUser, (req, res, 
 });
 
 // delete user from admin
-router.get("/dashboard/:idAdmin/:idUser/delete", isLoggedIn, isUser, (req, res, next) => {
+router.get("/dashboard/:idAdmin/:idUser/delete", isLoggedIn, isUser, sameAdmin, (req, res, next) => {
     const adminId = req.params.idAdmin;
     const userId = req.params.idUser;
     User.findByIdAndDelete(userId)
