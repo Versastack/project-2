@@ -108,19 +108,23 @@ router.post("/dashboard/:idAdmin/create", (req, res, next) => {
 router.post("/dashboard/:idAdmin/update", fileUploader.single('image'), (req, res, next) => {
     const { username, email, password, position } = req.body
     const adminId = req.params.idAdmin
-    Admin
-    .findByIdAndUpdate(adminId, {
-        username: username,
-        email: email,
-        password: password,
-        image: req.file.path
-    })
+    bcryptjs
+        .genSalt(saltRounds)
+        .then(salt => bcryptjs.hash(password, salt))
+        .then(hashedPassword => {
+        return Admin.findByIdAndUpdate(adminId, {
+            username: username,
+            email: email,
+            password: hashedPassword,
+            image: req.file.path
+            })
+        })
         .then((data) => {
             console.log(" User modified: ", data)
             res.redirect(`/dashboard/${data._id}`);
         })
         .catch(err => console.log('This error has been triggered', err))
-});
+    });
 
 // modify user as an admin
 router.post("/dashboard/:idAdmin/:idUser/update", (req, res, next) => {
