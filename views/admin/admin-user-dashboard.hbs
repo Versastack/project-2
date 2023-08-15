@@ -1,13 +1,15 @@
 <div>
 {{!-- <img src="https://img.freepik.com/premium-vector/man-avatar-profile-picture-vector-illustration_268834-538.jpg" alt=""> --}}
-{{#each userData}}
-   <p>{{this.username}}</p>  
-    <p>{{this.email}}</p> 
-    <p>{{this.position}}</p>       
-    <p>{{this._id}}</p>   
-{{/each}}
+<p>Username: {{userData.username}}</p>  
+<p>Email: {{userData.email}}</p> 
+<p>Positon: {{userData.position}}</p>       
+<p>Collaborator ID: {{userData._id}}</p>
+
 <form action="/dashboard/{{userData.administrator}}/{{userData._id}}/update" method="GET">
   <button type="submit">Modify user</button>
+</form>
+<form action="/dashboard/{{userData.administrator}}/{{userData._id}}/delete" method="GET">
+  <button type="submit">Delete user</button>
 </form>
 </div>
 

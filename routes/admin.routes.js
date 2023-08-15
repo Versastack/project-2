@@ -22,13 +22,15 @@ router.get("/dashboard/:idAdmin", (req, res, next) => {
     .catch(err => console.log('This error has been triggered', err))
 });
 
-// delete admin
+// delete admin and all users realted to it
 router.get("/dashboard/:idAdmin/delete", (req, res) => {
     const adminId = req.params.idAdmin;
-    console.log(adminId)
     Admin.findByIdAndDelete(adminId)
     .then (() =>{
-        res.redirect("/login")
+        User.deleteMany({administrator : adminId})
+        .then(() => {
+            res.redirect("/login")
+        })
     })
     .catch(err => console.log('This error has been triggered', err))
 });
@@ -39,10 +41,15 @@ router.get("/dashboard/:idAdmin/create", (req, res, next) => {
     res.render("admin/admin-create", {idAdmin})
 });
 
+//go to modify admin
+router.get("/dashboard/:idAdmin/update", (req, res, next) => {
+    const idAdmin = req.params.idAdmin
+    res.render("admin/admin-update", {idAdmin})
+});
+
 //GET to admin-user-dashboard and user render, see user created by an admin
 router.get("/dashboard/:idAdmin/:idUser", (req, res, next) => {
     const userId = req.params.idUser;
-
     User.findById(userId)
     .then((userData) => {
         res.render("admin/admin-user-dashboard", {userData});
@@ -56,6 +63,17 @@ router.get("/dashboard/:idAdmin/:idUser/update", (req, res, next) => {
     User.findById(userId)
     .then((userData) => {
         res.render("admin/admin-user-update", {userData});
+    })
+    .catch(err => console.log('This error has been triggered', err))
+});
+
+// delete user from admin
+router.get("/dashboard/:idAdmin/:idUser/delete", (req, res, next) => {
+    const adminId = req.params.idAdmin;
+    const userId = req.params.idUser;
+    User.findByIdAndDelete(userId)
+    .then (() =>{
+        res.redirect(`/dashboard/${adminId}`)
     })
     .catch(err => console.log('This error has been triggered', err))
 });
@@ -76,8 +94,25 @@ router.post("/dashboard/:idAdmin/create", (req, res, next) => {
         .catch(err => console.log('This error has been triggered', err))
 });
 
-// modify user as an admin
+//update admin profile
+router.post("/dashboard/:idAdmin/update", (req, res, next) => {
+    const { username, email, password, position } = req.body
+    const adminId = req.params.idAdmin
+    Admin
+    .findByIdAndUpdate(adminId, {
+        username: username,
+        email: email,
+        password: password,
+        position: position
+    })
+        .then((data) => {
+            console.log(" User modified: ", data)
+            res.redirect(`/dashboard/${data._id}`);
+        })
+        .catch(err => console.log('This error has been triggered', err))
+});
 
+// modify user as an admin
 router.post("/dashboard/:idAdmin/:idUser/update", (req, res, next) => {
     const { username, email, password, position } = req.body
     const userId = req.params.idUser;
@@ -95,16 +130,5 @@ router.post("/dashboard/:idAdmin/:idUser/update", (req, res, next) => {
         .catch(err => console.log('This error has been triggered', err))
 });
 
-//POST ROUTES
 
-// update button
-// router.post("/dashboard/:idAdmin/update", (req, res, next) => {
-//     const adminId = req.params.idAdmin;
-//     Admin
-//     .findByIdAndUpdate(adminId, req.body)
-//     .then(()=> {
-//         res.send("User updated"); 
-//     })
-//     .catch(err => console.log(Error, err))
-//   });
 module.exports = router;
