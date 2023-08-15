@@ -33,7 +33,6 @@ router.post("/signup", (req, res, next) => {
         .catch(err => console.log('This error has been triggered', err))
 });
 
-
 //login post
 router.post("/login", (req, res, next) => {
     const {username, password} = req.body;
@@ -45,92 +44,21 @@ router.post("/login", (req, res, next) => {
             User.findOne({ username, password })
             .then((user)=>{
                 if (user === null) {
-                    console.log("no estas registrado");
+                    console.log("usuario no registrado")
                 }
                 else {
-                    console.log(user, "eres usuario")
+                    //if user redirect to user dashboard
+                    res.redirect(`/user/dashboard/${user._id}`)
                 }
             })
             
         }
         else {
-            console.log(admin, "eres admin")
+            //if admin redirect to admin dashboard
+            res.redirect(`/dashboard/${admin._id}`)
         }
     })
     .catch((err)=> console.log(err))
-    
-   
-    // const user = User.findOne({ username, password });
-
-/*     if (admin) {
-        // Redirect to admin dashboard
-         Admin.findOne({ username })
-         .then((data) => {
-            res.render('admin/admin-dashboard', {adminId: data._id});  
-    })}
-    
-    else if (user) {
-            User.findOne({ username })
-            .then((data) => {
-           res.render('user/user-dashboard', {userId: data._id}) }) 
-        } */
-
-        
-    });
-
-
-//     const { username, password } = req.body;
-
-//     Admin.findOne({ username })
-//         .then((data) => {
-//             res.redirect(`/dashboard/${data._id}`);
-//         })
-//         .catch(err => console.log('This error has been triggered', err))
-// });
-
-// user goes to his dashboard
-
-// router.get("/dashboard/:idUser", (req, res, next) => {
-//     const idUser = req.params.idUser;
-//     User.findById(idUser)
-//     .then((data) => {
-//         res.render("user/user-dashboard", {data});
-//     })
-//     .catch(err => console.log('This error has been triggered', err))
-// });
-
-// user goes back to login
-// router.get("user/user-dashboard", (req, res, next) => {
-//     res.redirect("/login");
-// });
-
-// router.post("/dashboard/:idAdmin/update", (req, res, next) => {
-//     const adminId = req.params.idAdmin;
-//     Admin.findByIdAndUpdate(adminId, req.body)
-//     .then(()=> {
-//         res.send("User updated"); 
-//     })
-//     .catch(err => console.log(Error, err))
-//   });
-
-
-//  delete user
-// route.post("/dashboard/:idAdmin/:idUser/delete", (req, res, next)=> {
-//     const idAdmin = req.params.idAdmin
-//     const idUser = req.params.idUser;
-// Admin.findByIdAndDelete(idUser, req.body)
-//     .then(()=> {
-//         res.send("User deleted"); 
-//     })
-//     .catch(err => console.log(Error, err))
-
-
-// })
-
-
-
-
-
-
+});
 
 module.exports = router;
