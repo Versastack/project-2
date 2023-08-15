@@ -17,6 +17,14 @@ router.get("/login", (req, res, next) => {
     res.render("login");
 });
 
+//logout
+router.post('/logout', (req, res, next) => {
+    req.session.destroy(err => {
+      if (err) next(err);
+      res.redirect('/');
+    });
+});
+
 // POST OUTES
 
 //signup post

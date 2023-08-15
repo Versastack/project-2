@@ -1,5 +1,5 @@
 const Admin = require('../models/Admin.model');
-const User = require('../models/User.model');
+
 const isLoggedIn = (req, res, next) => {
     if (!req.session.currentUser) {
         return res.redirect('/login');
@@ -39,3 +39,7 @@ module.exports = {
     sameUser,
     sameAdmin
 };
+
+
+
+

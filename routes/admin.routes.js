@@ -139,5 +139,4 @@ router.post("/dashboard/:idAdmin/:idUser/update", (req, res, next) => {
         .catch(err => console.log('This error has been triggered', err))
 });
 
-
 module.exports = router;

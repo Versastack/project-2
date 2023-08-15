@@ -10,7 +10,21 @@
    </head>
 
    <body>
-
+      <nav>
+         <ul>
+            <li>
+               <a href="/login">Login</a>
+            </li>
+            <li>
+               <a href="/signup">Sign Up</a>
+            </li>
+            <li>
+               <form action="/logout" method="POST">
+                  <button type="submit">Log out</button>
+               </form>
+            </li>
+         </ul>
+      <nav>
       {{{body}}}
 
       <script src="/js/script.js"></script>
