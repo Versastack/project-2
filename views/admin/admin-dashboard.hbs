@@ -15,17 +15,21 @@
 <table>
   <thead>
     <tr>
+      <th>ID</th>
+      <th>position</th>
       <th>username</th>
       <th>email</th>
-      <th>password</th>
+      <th>Settings</th>
     </tr>
   </thead>
   <tbody>
     {{#each allUsers}}
     <tr>
+      <td>{{this._id}}</td>
+      <td>{{this.position}}</td>
       <td>{{this.username}}</td>
       <td>{{this.email}}</td>
-      <td>{{this.password}}</td>
+      <td><a href="/dashboard/{{this.administrator}}/{{this._id}}">User details</a></td>
     </tr>
     {{/each}}
   </tbody>

@@ -51,7 +51,6 @@ router.get("/dashboard/:idAdmin/:idUser", (req, res, next) => {
 });
 
 // go to update user page
-
 router.get("/dashboard/:idAdmin/:idUser/update", (req, res, next) => {
     const userId = req.params.idUser
     User.findById(userId)

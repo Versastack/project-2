@@ -1,17 +1,17 @@
 <div>
-<div>
-<img src="https://img.freepik.com/premium-vector/man-avatar-profile-picture-vector-illustration_268834-538.jpg" alt="">
+{{!-- <img src="https://img.freepik.com/premium-vector/man-avatar-profile-picture-vector-illustration_268834-538.jpg" alt=""> --}}
 {{#each userData}}
    <p>{{this.username}}</p>  
     <p>{{this.email}}</p> 
-        <p>{{this.position}}</p>       
+    <p>{{this.position}}</p>       
     <p>{{this._id}}</p>   
-
 {{/each}}
-</div>
+<form action="/dashboard/{{userData.administrator}}/{{userData._id}}/update" method="GET">
+  <button type="submit">Modify user</button>
+</form>
 </div>
 
-<div>
+{{!-- <div>
     <div>
     <table>
   <tr>
@@ -51,4 +51,4 @@
   </tr>
 </table>
 </div>
-</div>
+</div> --}}
