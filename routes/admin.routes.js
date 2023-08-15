@@ -130,13 +130,17 @@ router.post("/dashboard/:idAdmin/update", fileUploader.single('image'), (req, re
 router.post("/dashboard/:idAdmin/:idUser/update", (req, res, next) => {
     const { username, email, password, position } = req.body
     const userId = req.params.idUser;
-    User
-    .findByIdAndUpdate(userId, {
-        username: username,
-        email: email,
-        password: password,
-        position: position
-    })
+    bcryptjs
+        .genSalt(saltRounds)
+        .then(salt => bcryptjs.hash(password, salt))
+        .then(hashedPassword => {
+        return User.findByIdAndUpdate(userId, {
+            username: username,
+            email: email,
+            password: hashedPassword,
+            position: position
+            })
+        })
         .then((data) => {
             console.log(" User modified: ", data)
             res.redirect(`/dashboard/${data.administrator}`);
