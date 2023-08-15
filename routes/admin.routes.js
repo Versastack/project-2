@@ -82,7 +82,7 @@ router.get("/dashboard/:idAdmin/:idUser/delete", isLoggedIn, isUser, sameAdmin, 
 //POST
 
 // create user as an admin
-router.post("/dashboard/:idAdmin/create", (req, res, next) => {
+router.post("/dashboard/:idAdmin/create", fileUploader.single('image'), (req, res, next) => {
     const { username, email, password, position } = req.body
     const administrator = req.params.idAdmin;
     bcryptjs
@@ -94,6 +94,7 @@ router.post("/dashboard/:idAdmin/create", (req, res, next) => {
                     email,
                     password: hashedPassword,
                     position,
+                    image: req.file.path,
                     administrator
                 })
         })
@@ -127,7 +128,7 @@ router.post("/dashboard/:idAdmin/update", fileUploader.single('image'), (req, re
     });
 
 // modify user as an admin
-router.post("/dashboard/:idAdmin/:idUser/update", (req, res, next) => {
+router.post("/dashboard/:idAdmin/:idUser/update", fileUploader.single('image'), (req, res, next) => {
     const { username, email, password, position } = req.body
     const userId = req.params.idUser;
     bcryptjs
@@ -138,7 +139,8 @@ router.post("/dashboard/:idAdmin/:idUser/update", (req, res, next) => {
             username: username,
             email: email,
             password: hashedPassword,
-            position: position
+            position: position,
+            image: req.file.path
             })
         })
         .then((data) => {

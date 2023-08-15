@@ -23,6 +23,9 @@ const userSchema = new Schema({
         type: String,
         lowercase: true,
     },
+    image: {
+        type: String
+    },
     administrator: {
         type: Schema.Types.ObjectId,
         ref: "Admin"

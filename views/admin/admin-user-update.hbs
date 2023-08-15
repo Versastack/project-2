@@ -1,7 +1,7 @@
 <div>
     <h1>Modify User</h1>
     
-    <form action="/dashboard/{{userData.administrator}}/{{userData._id}}/update" method="POST">
+    <form action="/dashboard/{{userData.administrator}}/{{userData._id}}/update" method="POST" enctype="multipart/form-data">
         <label for="username">Username
             <input type="text" id="username" name="username" required/>
         </label>
@@ -14,6 +14,11 @@
         <label for="position">Position
             <input type="text" id="position" name="position" default="no-position"/>
         </label>
+
+        <label for="image"> Image
+            <input type="file" name="image" id="image"/>
+        </label>
+
         <button type="submit">Modify</button>
 
     </form>
