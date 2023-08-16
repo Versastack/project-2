@@ -3,15 +3,15 @@
     <form action="/dashboard/{{idAdmin}}/create" method="POST" enctype="multipart/form-data">
 
         <label for="username" class="labelForm">Username
-            <input type="text" id="username" name="username" class="inputForm" required/>
+            <input type="text" id="username" name="username" class="inputForm"/>
         </label>
 
         <label for="email" class="labelForm">Email
-            <input type="text" id="email" name="email" class="inputForm" required/>
+            <input type="text" id="email" name="email" class="inputForm"/>
         </label>
 
         <label for="password" class="labelForm">Password
-            <input type="password" id="password" name="password" class="inputForm" required/>
+            <input type="password" id="password" name="password" class="inputForm"/>
         </label>
 
         <label for="position" class="labelForm">Position
@@ -24,5 +24,8 @@
 
         <button type="submit" class="buttonForm">Create</button>
 
+        {{#if errorMessage}}
+        <p class="error">{{errorMessage}}</p>
+        {{/if}}
     </form>
 </div>

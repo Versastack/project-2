@@ -32,6 +32,10 @@ router.post('/logout', (req, res, next) => {
 //signup post
 router.post("/signup", fileUploader.single('image'), (req, res, next) => {
     const { username, email, password } = req.body
+    if (!username || !email || !password) {
+        res.render('signup', { errorMessage: 'All fields are mandatory. Please provide your username, email and password.' });
+        return;
+    }
     bcryptjs
         .genSalt(saltRounds)
         .then(salt => bcryptjs.hash(password, salt))
@@ -40,14 +44,21 @@ router.post("/signup", fileUploader.single('image'), (req, res, next) => {
                     username,
                     email,
                     password: hashedPassword,
-                    image : req.file.path
+                    image : req.file?.path
                 })
         })
         .then((data) => {
             console.log("New user created: ", data)
             res.redirect("/login");
         })
-        .catch(err => console.log('This error has been triggered', err))
+        .catch(err => {
+            if (err instanceof mongoose.Error.ValidationError) {
+                res.status(500).render('signup', { errorMessage: err.message });
+            } 
+            else {
+                next(err);
+            }
+        })
 });
 
 //login post
