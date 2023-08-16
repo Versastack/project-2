@@ -2,27 +2,27 @@
 <div class="formContainer">
     <form action="/signup" method="POST" enctype="multipart/form-data">
 
-        <label> Username
-            <input type="text" name="username" placeholder="Username" />
+        <label class="labelForm"> Username
+            <input type="text" name="username" placeholder="Username" class="inputForm"/>
         </label>
 
-        <label> Email
-            <input type="email" name="email" placeholder="Email" />
+        <label class="labelForm"> Email
+            <input type="email" name="email" placeholder="Email" class="inputForm"/>
         </label>
 
-        <label> Password
-            <input type="password" name="password" placeholder="********" />
+        <label class="labelForm"> Password
+            <input type="password" name="password" placeholder="********" class="inputForm"/>
         </label>
 
-        <label> Image
+        <label class="labelForm"> Image
             <input type="file" name="image"/>
         </label>
         
 
-        <button type="submit">Signup</button>
+        <button type="submit" class="buttonForm">Signup</button>
 
-        {{#if errorMessage}}
+        {{!-- {{#if errorMessage}}
         <p class="error">{{errorMessage}}</p>
-        {{/if}}
+        {{/if}} --}}
     </form>
 </div>

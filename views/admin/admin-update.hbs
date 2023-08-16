@@ -1,22 +1,24 @@
-<div>
-    <h1>Update your admin profile</h1>
-    
+<h2>Update your admin profile</h2>
+<div class="formContainer">
     <form action="/dashboard/{{idAdmin}}/update" method="POST" enctype="multipart/form-data">
-        <label for="username">Username
-            <input type="text" id="username" name="username" required/>
-        </label>
-        <label for="email">Email
-            <input type="text" id="email" name="email" required/>
-        </label>
-        <label for="password">Password
-            <input type="password" id="password" name="password" required/>
+
+        <label for="username" class="labelForm">Username
+            <input type="text" id="username" name="username" class="inputForm" required/>
         </label>
 
-        <label> Image
+        <label for="email" class="labelForm">Email
+            <input type="text" id="email" name="email" class="inputForm" required/>
+        </label>
+
+        <label for="password" class="labelForm">Password
+            <input type="password" id="password" name="password" class="inputForm" required/>
+        </label>
+
+        <label for="image" class="labelForm"> Image
             <input type="file" name="image"/>
         </label>    
         
-        <button type="submit">Update</button>
+        <button type="submit" class="buttonForm">Update</button>
 
     </form>
 </div>

@@ -2,18 +2,18 @@
 <div class="formContainer">
   <form action="/login" method="POST">
 
-    <label> Username
-      <input type="text" name="username" placeholder="Username" />
+    <label class="labelForm"> Username
+      <input type="text" name="username" placeholder="Username" class="inputForm"/>
     </label>
 
-    <label> Password
-      <input type="password" name="password" placeholder="********" />
+    <label class="labelForm"> Password
+      <input type="password" name="password" placeholder="********" class="inputForm"/>
     </label>
 
-    <button type="submit">Login</button>
+    <button type="submit" class="buttonForm">Login</button>
 
-    {{#if errorMessage}}
+    {{!-- {{#if errorMessage}}
     <p class="error">{{errorMessage}}</p>
-    {{/if}}
+    {{/if}} --}}
   </form>
 </div>
