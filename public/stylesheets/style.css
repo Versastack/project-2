@@ -12,7 +12,7 @@ h1 {
 }
 
 /* Styling for screens between 769px and 1079px */
-@media (min-width: 769px) { 
+@media (min-width: 646px) { 
   /* Navigation Buttons */
   nav ul {
     list-style: none;
@@ -29,7 +29,7 @@ h1 {
 
   nav ul li a {
     display: block;
-    padding: 1.5vw;
+    padding: 1.5vw 3vw;
     background-color: #3498db;
     color: #fff;
     text-decoration: none;
@@ -45,7 +45,7 @@ h1 {
   #btnLogOut {
     display: block;
     width: 100%;
-    padding: 1.5vw;
+    padding: 1.5vw 3vw;
     background-color: #e74c3c;
     color: #fff;
     border: none;
@@ -74,8 +74,9 @@ h1 {
   }
 
   .inputForm {
+    display: block;
     width: 90%;
-    padding: 2vw;
+    padding: 1.2vw;
     margin-bottom: 2vh;
     border: 1px solid #ccc;
     border-radius: 5px;
@@ -84,7 +85,7 @@ h1 {
   .buttonForm {
     display: block;
     width: 100%;
-    padding: 2vw;
+    padding: 1.2vw;
     background-color: #3498db;
     color: #fff;
     border: none;
@@ -232,4 +233,243 @@ h1 {
     border-radius: 0.5vw;
     font-weight: bold;
   }
+
 } 
+
+
+
+
+
+@media (max-width: 645px) { 
+    /* Navigation Buttons */
+    nav ul {
+      list-style: none;
+      display: flex;
+      justify-content: center;
+      align-items: center; /* Center the navigation vertically */
+      flex-direction: column; /* Stack navigation items vertically */
+      padding: 2vh;
+      margin: 0;
+    }
+  
+    nav ul li {
+      text-align: center;
+      /* margin: 0 1vw; */
+      margin: 1vh 0; /* Adjust vertical spacing between items */
+
+    }
+  
+    nav ul li a {
+      display: block;
+      padding: 1.5vw 3vw;
+      background-color: #3498db;
+      color: #fff;
+      text-decoration: none;
+      border-radius: 5px;
+      transition: background-color 0.3s ease;
+    }
+  
+    nav ul li a:hover {
+      background-color: #2980b9;
+    }
+  
+    /* Logout Button */
+    #btnLogOut {
+      display: block;
+      width: 100%;
+      padding: 1.5vw 3vw;
+      background-color: #e74c3c;
+      color: #fff;
+      border: none;
+      border-radius: 5px;
+      cursor: pointer;
+      transition: background-color 0.3s ease;
+    }
+  
+    #btnLogOut:hover {
+      background-color: #c0392b;
+    }
+  
+    /* Form Container and Elements */
+    .formContainer {
+      width: 70vw;
+      margin: 0 auto;
+      padding: 2vw;
+      background-color: #f2f2f2;
+      border-radius: 5px;
+    }
+  
+    .labelForm {
+      display: block;
+      margin-bottom: 2vh;
+      font-weight: bold;
+    }
+  
+    .inputForm {
+      display: block;
+      width: 90%;
+      padding: 1.2vw;
+      margin-bottom: 2vh;
+      border: 1px solid #ccc;
+      border-radius: 5px;
+    }
+  
+    .buttonForm {
+      display: block;
+      width: 100%;
+      padding: 1.2vw;
+      background-color: #3498db;
+      color: #fff;
+      border: none;
+      border-radius: 5px;
+      cursor: pointer;
+      transition: background-color 0.3s ease;
+    }
+  
+    .buttonForm:hover {
+      background-color: #2980b9;
+    }
+  
+    .adminProfile {
+      text-align: center;
+      margin: 5vw auto;
+      padding: 5vw;
+      background-color: #f2f2f2;
+      border-radius: 5px;
+      box-shadow: 0px 0px 10px rgba(0, 0, 0, 0.2);
+    }
+  
+    .adminProfile h2 {
+      font-size: 2.5vw;
+      margin-bottom: 2.5vw;
+    }
+  
+    .userHud {
+      display: flex;
+      align-items: center;
+      margin-bottom: 5vw;
+      background-color: #f2f2f2;
+      padding: 1vw 2vw;
+      /* background-color: lightgrey;
+      border-radius: 1vw; */
+    }
+  
+    .userHud img {
+      max-width: 15vw;
+      border-radius: 50%;
+      margin-right: 2.5vw;
+    }
+  
+    .info {
+      flex: 1;
+    }
+  
+    .info p {
+      margin: 1vw 0;
+      font-weight: bold;
+    }
+  
+    .btnFormAdmin, .btnFormUser {
+      display: flex;
+      justify-content: center;
+      margin-bottom: 5vw;
+      margin-left: 1.5vw;
+      align-items: center; /* Center vertically */
+      gap: 2vw; /* Spacing between buttons */
+      
+    }
+  
+  
+  
+  
+    .btnFormAdmin button, #btnSignUp, #btnLogin, #btnDeleteUser, #btnUpdateUser {
+      padding: 1vw 4vw;
+      background-color: #3498db;
+      color: #fff;
+      border: none;
+      border-radius: 5px;
+      cursor: pointer;
+      transition: background-color 0.3s ease;
+
+  
+    }
+  
+    #btnDeleteAdmin, #btnDeleteUser{
+      background-color: red;
+    }
+  
+    #btnSignUp, #btnLogin{
+      width: 100%;
+    }
+  
+    #btnSignUp{
+      margin-bottom: 3vw;
+    }
+  
+    .btnFormAdmin button:hover {
+      background-color: #0e11e9;
+    }
+  
+    table {
+      width: 100%;
+      border-collapse: collapse;
+      margin-top: 5vw;
+      overflow-x: auto; /* Add horizontal scroll if necessary */
+    }
+  
+    th, td {
+      /* padding: 2vw; */
+      text-align: center;
+      border-bottom: 1px solid #ccc;
+      padding: 2vw; /* Adjust padding for smaller spacing */
+      font-size: 2vw; /* Adjust font size for smaller screens */
+    }
+  
+    th {
+      background-color: #f2f2f2;
+    }
+  
+    tbody tr:hover {
+      background-color: #f2f2f2;
+    }
+  
+    table a {
+      text-decoration: none;
+      color: #3498db;
+      transition: color 0.3s ease;
+    }
+  
+    table a:hover {
+      color: #2980b9;
+    }
+  
+    .buttonsContainer{
+      display: flex;
+      justify-content: space-between;
+      padding: 2vh;
+      overflow-x: auto;
+    }
+  
+    #logo{
+      height: 10vw;
+      width: 15vw;
+      position: absolute;
+      top: 4%;
+      left: 5%;
+    }
+  
+    body {
+      margin-top: 5%;
+    }
+  
+    .error {
+      background-color: red;
+      color: white;
+      font-size: 1vw;
+      padding: 0.5vw;
+      border-radius: 0.5vw;
+      font-weight: bold;
+    }
+  
+
+}
