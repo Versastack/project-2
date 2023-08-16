@@ -1,25 +1,25 @@
-<div>
-    <h1>Modify User</h1>
+<h2>Modify User</h2>
+<div class="formContainer" >
     
     <form action="/dashboard/{{userData.administrator}}/{{userData._id}}/update" method="POST" enctype="multipart/form-data">
-        <label for="username">Username
-            <input type="text" id="username" name="username" required/>
+        <label for="username" class="labelForm">Username
+            <input type="text" id="username" name="username" class="inputForm" required/>
         </label>
-        <label for="email">Email
-            <input type="text" id="email" name="email" required/>
+        <label for="email" class="labelForm">Email
+            <input type="text" id="email" name="email" class="inputForm" required/>
         </label>
-        <label for="password">Password</label>
-            <input type="password" id="password" name="password" required/>
-        
-        <label for="position">Position
-            <input type="text" id="position" name="position" default="no-position"/>
+        <label for="password" class="labelForm">Password
+            <input type="password" id="password" name="password" class="inputForm" required/>
+        </label>
+        <label for="position" class="labelForm">Position
+            <input type="text" id="position" name="position" class="inputForm" default="no-position"/>
         </label>
 
-        <label for="image"> Image
+        <label for="image" class="labelForm"> Image
             <input type="file" name="image" id="image"/>
         </label>
 
-        <button type="submit">Modify</button>
+        <button type="submit" class="buttonForm">Modify</button>
 
     </form>
 </div>

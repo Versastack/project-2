@@ -1,10 +1,13 @@
+<h2>Admin profile</h2>
 <div class="userHud">
-    <h1>Admin profile</h1>
     <img src="{{data.image}}" alt="admin_image">
+    <div class="info">
     <p>Username: {{data.username}}</p>  
     <p>Email: {{data.email}}</p>  
     <p>Admin ID: {{data._id}}</p>    
-</div>
+    </div>
+</div >
+<div class="buttonsContainer">
 <form action="/dashboard/{{data._id}}/delete" method="GET" class="btnFormAdmin">
     <button type="submit" id="btnDeleteAdmin">Delete your admin profile</button>
 </form>
@@ -14,6 +17,7 @@
 <form action="/dashboard/{{data._id}}/update" method="GET" class="btnFormAdmin">
     <button type="submit" id="btnUpdateAdmin">Modify your admin profile</button>
 </form>
+</div>
 <table>
   <thead>
     <tr>
