@@ -59,7 +59,7 @@ router.post("/login", (req, res, next) => {
             User.findOne({username})
             .then((user)=>{
                 if (user === null) {
-                    console.log("usuario no registrado")
+                    res.render("login", { errorMessage: "User doesn't exist." });
                 }
                 else {
                     if(bcryptjs.compareSync(password, user.password)) {
@@ -67,7 +67,7 @@ router.post("/login", (req, res, next) => {
                         res.redirect(`/user/dashboard/${user._id}`)
                     }
                     else{
-                        console.log("User contraseña mal")
+                        res.render("login", { errorMessage: "Incorrect user and/or password." });
                     }
                 }
             }) 
@@ -78,7 +78,7 @@ router.post("/login", (req, res, next) => {
                 res.redirect(`/dashboard/${admin._id}`)
             }
             else{
-                console.log("Admin contraseña mal")
+                res.render("login", { errorMessage: "Incorrect user and/or password." });
             }
         }
     })

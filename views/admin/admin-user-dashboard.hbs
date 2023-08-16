@@ -1,10 +1,12 @@
+<h2>User profile</h2>
 <div class="userHud">
-  <h1>User profile</h1>
   <img src="{{userData.image}}" alt="user_image">
-  <p>Username: {{userData.username}}</p>  
-  <p>Email: {{userData.email}}</p> 
-  <p>Positon: {{userData.position}}</p>       
-  <p>Collaborator ID: {{userData._id}}</p>
+  <div class="info">
+    <p>Username: {{userData.username}}</p>  
+    <p>Email: {{userData.email}}</p> 
+    <p>Positon: {{userData.position}}</p>       
+    <p>Collaborator ID: {{userData._id}}</p>
+  </div>
 </div>
 <form action="/dashboard/{{userData.administrator}}/{{userData._id}}/update" method="GET" class="btnFormUser">
   <button type="submit" id="btnUpdateUser">Modify user</button>

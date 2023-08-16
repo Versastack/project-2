@@ -10,3 +10,107 @@ a {
 h1 {
   color: 15px;
 }
+@media (max-width: 768px) {
+
+  /*START LAYOUT*/
+  nav ul{
+    list-style-type: none;
+    display: flex;
+    flex-direction: row;
+    justify-content: space-around;
+  }
+  nav a{
+    text-decoration: none;
+    color: black;
+  }
+  nav li{
+    border-style: solid;
+    border-color: black;
+    border-radius: 10%;
+    border-width: 0.25vw;
+    padding: 1vw 5vw;
+  }
+
+  nav #btnLogOut{
+    border: none;
+    background: none;
+    color: black;
+  }
+
+  /*END LAYOUT*/
+
+  /*START INDEX*/
+  h2{
+    text-align: center;
+  }
+
+  #btnSignUp, #btnLogin{
+    background: none;
+    text-align: center;
+    border: 1px black solid;
+    border-radius: 10%;
+    padding: 1vw 4vw;
+    font-size: 6vw;
+    color: black;
+    margin: 6vw 0;
+  }
+
+  #btnSignUp{
+    margin-left: 30%;
+  }
+
+  #btnLogin{
+    margin-left: 33%;
+  }
+
+  /*END INDEX*/
+
+  /*START SINGUP & LOGIN FORM*/
+  .formContainer label{
+    display: flex;
+    flex-direction: column;
+    margin: 4vw 2vw;
+  }
+
+  .formContainer input{
+    margin-top: 1vw;
+  }
+
+  .buttonForm {
+    margin-top: 2.5%;
+    margin-left: 43%;
+    background: none;
+    text-align: center;
+    border: 1px black solid;
+    border-radius: 10%;
+    padding: 1vw 4vw;
+    font-size: 2vw;
+  }
+  /*START SINGUP & LOGIN FORM*/
+
+  /*START HUD*/
+    .userHud{
+      display: flex;
+      flex-direction: row;
+      justify-content: flex-start;
+      align-content: left;
+    }
+
+    .userHud img{
+      width: 15vw;
+      height: 15vw;
+      border-radius: 50%;
+      border: 1px black solid;
+    }
+
+    .info {
+      display: flex;
+      flex-direction: column;
+      margin: 0.25vw 1vw;
+      padding: 0;
+    }
+  /*END HUD*/
+
+  /*START create user, modify admin, delete project*/
+  /*END create user, modify admin, delete project*/
+}
