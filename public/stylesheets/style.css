@@ -10,3 +10,101 @@ a {
 h1 {
   color: 15px;
 }
+
+@media screen and (min-width: 1080px) {
+  body {
+    padding: 5%;
+    font: 2vw "Lucida Grande", Helvetica, Arial, sans-serif;
+  }
+  a {
+    color: #00b7ff;
+  }
+  
+  h1 {
+    color: 15px;
+  }
+  
+  formContainer {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    margin-bottom: 20px;
+  }
+  
+  .labelForm {
+    font-weight: bold;
+    margin-bottom: 10px;
+  }
+  
+  .inputForm {
+    padding: 10px;
+    margin-bottom: 10px;
+    width: 100%;
+    border: 1px solid #ccc;
+    border-radius: 4px;
+  }
+  
+  .buttonForm {
+    padding: 10px 20px;
+    background-color: #007bff;
+    color: #fff;
+    border: none;
+    border-radius: 4px;
+    cursor: pointer;
+  }
+  
+  .userHud {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 10px;
+    background-color: #f5f5f5;
+    border: 1px solid #ccc;
+    border-radius: 4px;
+  }
+  
+  .btnForm {
+    padding: 10px 20px;
+    background-color: #007bff;
+    color: #fff;
+    border: none;
+    border-radius: 4px;
+    cursor: pointer;
+  }
+  
+  #btnCreateAdmin,
+  #btnUpdateAdmin {
+    background-color: #007bff;
+  }
+  
+  #btnDeleteAdmin {
+    background-color: #dc3545
+  }
+
+  #btnUpdateUser {
+    background-color:#007bff;
+  }
+  
+  #btnDeleteUser{
+    background-color: #dc3545
+  }
+
+
+  #btnSignUp,
+  #btnLogin {
+    background-color: #007bff;
+  }
+  
+  #btnLogOut {
+    background-color: #6c757d;
+  }
+
+
+
+
+
+
+
+
+
+}

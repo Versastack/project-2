@@ -1,18 +1,20 @@
+<h2>Admin profile</h2>
 <div class="userHud">
-    <h1>Admin profile</h1>
-    <img src="{{data.image}}" alt="admin_image">
-    <p>Username: {{data.username}}</p>  
-    <p>Email: {{data.email}}</p>  
-    <p>Admin ID: {{data._id}}</p>    
+  <img src="{{data.image}}" alt="admin_image">
+  <div class="info">
+    <p>Username: {{data.username}}</p>
+    <p>Email: {{data.email}}</p>
+    <p>Admin ID: {{data._id}}</p>
+  </div>
 </div>
 <form action="/dashboard/{{data._id}}/delete" method="GET" class="btnFormAdmin">
-    <button type="submit" id="btnDeleteAdmin">Delete your admin profile</button>
+  <button type="submit" id="btnDeleteAdmin">Delete your admin profile</button>
 </form>
 <form action="/dashboard/{{data._id}}/create" method="GET" class="btnFormAdmin">
-    <button type="submit" id="btnCreateAdmin">Create a new collaborator profile</button>
+  <button type="submit" id="btnCreateAdmin">Create a new collaborator profile</button>
 </form>
 <form action="/dashboard/{{data._id}}/update" method="GET" class="btnFormAdmin">
-    <button type="submit" id="btnUpdateAdmin">Modify your admin profile</button>
+  <button type="submit" id="btnUpdateAdmin">Modify your admin profile</button>
 </form>
 <table>
   <thead>
