@@ -399,11 +399,11 @@ h1 {
     flex-direction: column; 
   }
   #logo { 
-    height: 25vw;
-    width: 35vw; 
+    height: 20vw;
+    width: 30vw; 
     position: absolute; 
     top: 1%; 
-    left: 33%; 
+    left: 35%; 
   }
   body {
     margin-top: 5%;
@@ -421,5 +421,5 @@ h1 {
   #btnSignUp:hover {
     background-color: #599b2d;
   }
-  
+
 }
