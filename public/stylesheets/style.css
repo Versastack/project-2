@@ -205,6 +205,10 @@ h1 {
     font-weight: bold; 
     width: 92.5%; 
   }
+  #btnLogin:hover,
+  #btnSignUp:hover {
+    background-color: #599b2d;
+  }
 }
 
 @media (max-width: 645px) {
@@ -405,5 +409,9 @@ h1 {
     border-radius: 0.5vw; 
     font-weight: bold; 
     width: 92.5%; 
+  }
+  #btnLogin:hover,
+  #btnSignUp:hover {
+    background-color: #599b2d;
   }
 }
