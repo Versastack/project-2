@@ -16,8 +16,11 @@
                <img src="/images/logo.png" alt="versastack logo" id="logo">
             </li>
             {{#if connected}}
+               <li>
+                  <a href="/dashboard/{{idAdmin}}">Go to dashboard</a>
+               </li>
             {{else}}
-            <li>
+               <li>
                   <a href="/login">Login</a>
                </li>
                <li>

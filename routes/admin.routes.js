@@ -12,12 +12,12 @@ const fileUploader = require('../config/cloudinary.config');
 
 // render admin in dashboard and dashboard user
 router.get("/dashboard/:idAdmin", isLoggedIn, isUser, sameAdmin, (req, res, next) => {
-    const adminId = req.params.idAdmin;  
-    Admin.findById(adminId)
+    const idAdmin = req.params.idAdmin;  
+    Admin.findById(idAdmin)
     .then((data) => {
-        User.find({administrator : adminId})
+        User.find({administrator : idAdmin})
         .then((allUsers) => {
-            res.render("admin/admin-dashboard", {data , allUsers, connected: req.session.currentUser})
+            res.render("admin/admin-dashboard", {idAdmin ,data , allUsers, connected: req.session.currentUser})
         })
     })
     .catch(err => console.log('This error has been triggered', err))
@@ -53,20 +53,22 @@ router.get("/dashboard/:idAdmin/update", isLoggedIn, isUser, sameAdmin, (req, re
 
 //GET to admin-user-dashboard and user render, see user created by an admin
 router.get("/dashboard/:idAdmin/:idUser", isLoggedIn, isUser, sameAdmin, (req, res, next) => {
+    const idAdmin = req.params.idAdmin
     const userId = req.params.idUser;
     User.findById(userId)
     .then((userData) => {
-        res.render("admin/admin-user-dashboard", {userData, connected: req.session.currentUser});
+        res.render("admin/admin-user-dashboard", {idAdmin, userData, connected: req.session.currentUser});
     })
     .catch(err => console.log('This error has been triggered', err))
 });
 
 // go to update user page
 router.get("/dashboard/:idAdmin/:idUser/update", isLoggedIn, isUser, sameAdmin, (req, res, next) => {
+    const idAdmin = req.params.idAdmin
     const userId = req.params.idUser
     User.findById(userId)
     .then((userData) => {
-        res.render("admin/admin-user-update", {userData, connected: req.session.currentUser});
+        res.render("admin/admin-user-update", {idAdmin, userData, connected: req.session.currentUser});
     })
     .catch(err => console.log('This error has been triggered', err))
 });
