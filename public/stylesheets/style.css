@@ -38,7 +38,7 @@ h1 {
   nav ul li a {
     display: block;
     padding: 1.5vw 3vw;
-    background-color: #7eeb36;
+    background-color: #7eeb36;  /*color*/
     color: #fff;
     text-decoration: none;
     border-radius: 5px;
