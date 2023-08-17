@@ -408,8 +408,8 @@ h1 {
     flex-direction: column; 
   }
   #logo { 
-    height: 20vw;
-    width: 30vw; 
+    height: 15vw;
+    width: 25vw; 
     position: absolute; 
     top: 1%; 
     left: 5%; 
