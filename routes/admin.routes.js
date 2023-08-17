@@ -85,6 +85,10 @@ router.get("/dashboard/:idAdmin/:idUser/delete", isLoggedIn, isUser, sameAdmin, 
 router.post("/dashboard/:idAdmin/create", fileUploader.single('image'), (req, res, next) => {
     const { username, email, password, position } = req.body
     const administrator = req.params.idAdmin;
+    if (!username || !email || !password) {
+        res.render("admin/admin-create", {idAdmin: administrator, errorMessage: 'These fields are mandatory. Please provide your username, email and password.' });
+        return;
+    }
     bcryptjs
         .genSalt(saltRounds)
         .then(salt => bcryptjs.hash(password, salt))
@@ -94,7 +98,7 @@ router.post("/dashboard/:idAdmin/create", fileUploader.single('image'), (req, re
                     email,
                     password: hashedPassword,
                     position,
-                    image: req.file.path,
+                    image: req.file?.path,
                     administrator
                 })
         })
@@ -102,7 +106,14 @@ router.post("/dashboard/:idAdmin/create", fileUploader.single('image'), (req, re
             console.log("New user created: ", data)
             res.redirect(`/dashboard/${administrator}`);
         })
-        .catch(err => console.log('This error has been triggered', err))
+        .catch(err => {
+            if (err instanceof mongoose.Error.ValidationError) {
+                res.status(500).render('admin/admin-create', {idAdmin: administrator, errorMessage: err.message });
+            } 
+            else {
+                next(err);
+            }
+        })
 });
 
 //update admin profile
@@ -117,7 +128,7 @@ router.post("/dashboard/:idAdmin/update", fileUploader.single('image'), (req, re
             username: username,
             email: email,
             password: hashedPassword,
-            image: req.file.path
+            image: req.file?.path
             })
         })
         .then((data) => {
@@ -140,7 +151,7 @@ router.post("/dashboard/:idAdmin/:idUser/update", fileUploader.single('image'), 
             email: email,
             password: hashedPassword,
             position: position,
-            image: req.file.path
+            image: req.file?.path
             })
         })
         .then((data) => {
