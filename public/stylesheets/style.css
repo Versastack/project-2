@@ -19,8 +19,6 @@ h1 {
     padding-right: 30vw;
   }
 
-
-
   nav ul {
     list-style: none;
     display: flex;
@@ -48,7 +46,7 @@ h1 {
   }
 
   nav ul li a:hover {
-    background-color: #2980b9;
+    background-color: #599b2d;
   }
 
   /* Logout Button */
@@ -74,6 +72,7 @@ h1 {
     width: 70vw;
     margin: 0 auto;
     padding: 2vw;
+    padding-right: 0.25vw;
     background-color: #f2f2f2;
     border-radius: 5px;
   }
@@ -81,7 +80,7 @@ h1 {
   h2{
     background-color: white;
     padding-bottom: 1vw;
-    padding-right: 6vw;
+    padding-right: 4vw;
   }
 
   .labelForm {
@@ -113,7 +112,7 @@ h1 {
   }
 
   .buttonForm:hover {
-    background-color: #2980b9;
+    background-color: #599b2d;
   }
 
   .adminProfile {
@@ -165,9 +164,6 @@ h1 {
     
   }
 
-
-
-
   .btnFormAdmin button, #btnSignUp, #btnLogin, #btnDeleteUser, #btnUpdateUser {
     padding: 1vw 4vw;
     background-color: #7eeb36;
@@ -193,7 +189,7 @@ h1 {
   }
 
   .btnFormAdmin button:hover {
-    background-color: #0e11e9;
+    background-color: #599b2d;
   }
 
   table {
@@ -251,12 +247,10 @@ h1 {
     padding: 0.5vw;
     border-radius: 0.5vw;
     font-weight: bold;
+    width: 92.5%;
   }
 
 } 
-
-
-
 
 
 @media (max-width: 645px) { 
@@ -294,7 +288,7 @@ h1 {
     }
   
     nav ul li a:hover {
-      background-color: #2980b9;
+      background-color: #599b2d;
     }
   
     /* Logout Button */
@@ -359,7 +353,7 @@ h1 {
     }
   
     .buttonForm:hover {
-      background-color: #2980b9;
+      background-color: #599b2d;
     }
   
     .adminProfile {
@@ -411,9 +405,6 @@ h1 {
       
     }
   
-  
-  
-  
     .btnFormAdmin button, #btnSignUp, #btnLogin, #btnDeleteUser, #btnUpdateUser {
       padding: 1vw 4vw;
       background-color: #7eeb36;
@@ -440,7 +431,7 @@ h1 {
     }
   
     .btnFormAdmin button:hover {
-      background-color: #0e11e9;
+      background-color: #599b2d;
     }
   
     table {
@@ -502,7 +493,6 @@ h1 {
       padding: 0.5vw;
       border-radius: 0.5vw;
       font-weight: bold;
+      width: 92.5%;
     }
-  
-
 }
