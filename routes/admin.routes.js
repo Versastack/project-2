@@ -17,7 +17,7 @@ router.get("/dashboard/:idAdmin", isLoggedIn, isUser, sameAdmin, (req, res, next
     .then((data) => {
         User.find({administrator : adminId})
         .then((allUsers) => {
-            res.render("admin/admin-dashboard", {data , allUsers})
+            res.render("admin/admin-dashboard", {data , allUsers, connected: req.session.currentUser})
         })
     })
     .catch(err => console.log('This error has been triggered', err))
@@ -29,8 +29,11 @@ router.get("/dashboard/:idAdmin/delete", isLoggedIn, isUser, sameAdmin, (req, re
     Admin.findByIdAndDelete(adminId)
     .then (() =>{
         User.deleteMany({administrator : adminId})
-        .then(() => {
-            res.redirect("/login")
+        .then (() =>{
+        req.session.destroy(err => {
+            if (err) next(err);
+            res.redirect('/');
+            });
         })
     })
     .catch(err => console.log('This error has been triggered', err))
@@ -39,13 +42,13 @@ router.get("/dashboard/:idAdmin/delete", isLoggedIn, isUser, sameAdmin, (req, re
 // go to create user page
 router.get("/dashboard/:idAdmin/create", isLoggedIn, isUser, sameAdmin, (req, res, next) => {
     const idAdmin = req.params.idAdmin
-    res.render("admin/admin-create", {idAdmin})
+    res.render("admin/admin-create", {idAdmin, connected: req.session.currentUser})
 });
 
 //go to modify admin
 router.get("/dashboard/:idAdmin/update", isLoggedIn, isUser, sameAdmin, (req, res, next) => {
     const idAdmin = req.params.idAdmin
-    res.render("admin/admin-update", {idAdmin})
+    res.render("admin/admin-update", {idAdmin, connected: req.session.currentUser})
 });
 
 //GET to admin-user-dashboard and user render, see user created by an admin
@@ -53,7 +56,7 @@ router.get("/dashboard/:idAdmin/:idUser", isLoggedIn, isUser, sameAdmin, (req, r
     const userId = req.params.idUser;
     User.findById(userId)
     .then((userData) => {
-        res.render("admin/admin-user-dashboard", {userData});
+        res.render("admin/admin-user-dashboard", {userData, connected: req.session.currentUser});
     })
     .catch(err => console.log('This error has been triggered', err))
 });
@@ -63,7 +66,7 @@ router.get("/dashboard/:idAdmin/:idUser/update", isLoggedIn, isUser, sameAdmin, 
     const userId = req.params.idUser
     User.findById(userId)
     .then((userData) => {
-        res.render("admin/admin-user-update", {userData});
+        res.render("admin/admin-user-update", {userData, connected: req.session.currentUser});
     })
     .catch(err => console.log('This error has been triggered', err))
 });

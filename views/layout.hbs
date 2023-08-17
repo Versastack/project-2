@@ -15,12 +15,15 @@
             <li>
                <img src="/images/logo.png" alt="versastack logo" id="logo">
             </li>
+            {{#if connected}}
+            {{else}}
             <li>
-               <a href="/login">Login</a>
-            </li>
-            <li>
-               <a href="/signup">Sign Up</a>
-            </li>
+                  <a href="/login">Login</a>
+               </li>
+               <li>
+                  <a href="/signup">Sign Up</a>
+               </li>
+            {{/if}}
             <li>
                <form action="/logout" method="POST">
                   <button type="submit" id="btnLogOut">Log out</button>

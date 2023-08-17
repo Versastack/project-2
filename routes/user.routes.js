@@ -9,7 +9,7 @@ router.get("/user/dashboard/:idUser", isLoggedIn, sameUser, (req, res, next) => 
     const idUser = req.params.idUser;
     User.findById(idUser)
     .then((data) => {
-        res.render("user/user-dashboard", {data});
+        res.render("user/user-dashboard", {data, connected: req.session.currentUser});
     })
     .catch(err => console.log('This error has been triggered', err))
 });

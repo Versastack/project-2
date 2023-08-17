@@ -7,16 +7,18 @@ const Admin = require('../models/Admin.model');
 const User = require('../models/User.model');
 const fileUploader = require('../config/cloudinary.config');
 
-// GET ROUTES
+router.get("/", (req, res, next) => {
+    res.render("/", {connected: req.session.currentUser})
+})
 
 //sign-up get
 router.get("/signup", (req, res, next) => {
-    res.render("signup");
+    res.render("signup", {connected: req.session.currentUser});
 });
 
 //login get
 router.get("/login", (req, res, next) => {
-    res.render("login");
+    res.render("login", {connected: req.session.currentUser});
 });
 
 //logout
@@ -27,7 +29,7 @@ router.post('/logout', (req, res, next) => {
     });
 });
 
-// POST OUTES
+// POST ROUTES
 
 //signup post
 router.post("/signup", fileUploader.single('image'), (req, res, next) => {
