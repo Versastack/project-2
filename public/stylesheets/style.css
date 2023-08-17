@@ -13,7 +13,8 @@ h1 {
 
 @media (min-width: 646px) {
   #adminProfile { 
-    padding-right: 30vw; 
+    padding-right: 0;
+    margin-right: 0;
   }
   nav ul { 
     list-style: none; 
@@ -212,8 +213,14 @@ h1 {
 }
 
 @media (max-width: 645px) {
+
+  body{
+    padding: 0;
+    margin: 0;
+    font: 14px "Lucida Grande", Helvetica, Arial, sans-serif;
+  }
   #adminProfile { 
-    padding-right: 30vw;
+    padding-right: 0;
   }
   nav ul { 
     list-style: none; 
@@ -314,6 +321,8 @@ h1 {
     background-color: #f2f2f2; 
     padding: 1vw 1.2vw; 
     font-size: 3.1vw;
+    margin-right: 0;
+    padding-right: 0;
   }
   .userHud img { 
     max-width: 20vw; 
@@ -403,7 +412,7 @@ h1 {
     width: 30vw; 
     position: absolute; 
     top: 1%; 
-    left: 35%; 
+    left: 5%; 
   }
   body {
     margin-top: 5%;
