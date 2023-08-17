@@ -1,4 +1,4 @@
-<h2>Admin profile</h2>
+<h2 id="adminProfile">Admin profile</h2>
 <div class="userHud">
     <img src="{{data.image}}" alt="admin_image">
     <div class="info">
@@ -6,7 +6,7 @@
     <p>Email: {{data.email}}</p>  
     <p>Admin ID: {{data._id}}</p>    
     </div>
-</div >
+</div>
 <div class="buttonsContainer">
 <form action="/dashboard/{{data._id}}/delete" method="GET" class="btnFormAdmin">
     <button type="submit" id="btnDeleteAdmin">Delete your admin profile</button>
