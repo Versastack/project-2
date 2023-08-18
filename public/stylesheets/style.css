@@ -23,6 +23,7 @@ h1 {
     padding: 2vh; 
     margin: 0; 
     margin-bottom: 2vh; 
+    
   }
   nav ul li { 
     text-align: center; 
@@ -191,7 +192,7 @@ h1 {
     height: 10vw; 
     width: 15vw; 
     position: absolute;
-    top: 12%; 
+    top: 5%; 
     left: 5%; 
   }
   body { 
